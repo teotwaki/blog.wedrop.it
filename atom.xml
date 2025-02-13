@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Drop a Blog</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-13T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/atom.xml</id><entry xml:lang="en">
+        <title>Switching to a split keyboard</title>
+        <published>2025-02-13T00:00:00+00:00</published>
+        <updated>2025-02-13T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/switching-split-keyboard/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/switching-split-keyboard/</id>
+        <summary type="html">Documenting my transition to custom split mechanical keyboards.</summary>
+        </entry><entry xml:lang="en">
+        <title>Fresh coat of paint, part deux</title>
+        <published>2025-02-10T00:00:00+00:00</published>
+        <updated>2025-02-10T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/fresh-coat-paint-part-deux/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/fresh-coat-paint-part-deux/</id>
+        <summary type="html">Culling old writing and modernising tools</summary>
+        </entry><entry xml:lang="en">
+        <title>The boy&#x27;s birthday gift</title>
+        <published>2019-09-23T00:00:00+00:00</published>
+        <updated>2019-09-23T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/boys-birthday-gift/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/boys-birthday-gift/</id>
+        <summary type="html">Once upon a time, there was a little boy who really wanted a dog.</summary>
+        </entry><entry xml:lang="en">
+        <title>Breaking the ranks</title>
+        <published>2018-01-06T00:00:00+00:00</published>
+        <updated>2018-01-06T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/breaking-the-ranks/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/breaking-the-ranks/</id>
+        <summary type="html">For the fourth time in eighteen months, I am on my way to Belgium. For the fourth
+time, it is to thank someone for being there, and tell them goodbye for one last and final time.</summary>
+        </entry><entry xml:lang="en">
+        <title>Freebox automatic ruTorrent download</title>
+        <published>2016-04-26T00:00:00+00:00</published>
+        <updated>2016-04-26T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/freebox-rutorrent/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/freebox-rutorrent/</id>
+        <summary type="html">A couple of scripts I used to use so my Freebox would automatically download
+everything my seedbox had finished downloading.</summary>
+        </entry><entry xml:lang="en">
+        <title>My FreeBSD setup</title>
+        <published>2016-04-23T00:00:00+00:00</published>
+        <updated>2016-04-23T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/freebsd-setup/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/freebsd-setup/</id>
+        <summary type="html">Documentation of my old FreeBSD setup</summary>
+        </entry><entry xml:lang="en">
+        <title>A reply for Tim&#x27;s StackOverflow question</title>
+        <published>2015-08-25T00:00:00+00:00</published>
+        <updated>2015-08-25T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/reply-tim-stackoverflow-question/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/reply-tim-stackoverflow-question/</id>
+        <summary type="html">An old Maemo friend reached out on Twitter and asked for help regarding some
+issue he was running into using mysqli and PHP. Below is my response that I didn&#x27;t have time to
+post before the question was locked.</summary>
+        </entry><entry xml:lang="en">
+        <title>Building GCC</title>
+        <published>2015-08-24T00:00:00+00:00</published>
+        <updated>2015-08-24T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/building-gcc/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/building-gcc/</id>
+        <summary type="html">A look at how to build a backup version of GCC in case something goes wrong with
+the version provided by your distribution&#x27;s package manager.&quot;</summary>
+        </entry><entry xml:lang="en">
+        <title>Fresh coat of paint</title>
+        <published>2015-08-24T00:00:00+00:00</published>
+        <updated>2015-08-24T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/fresh-coat-of-paint/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/fresh-coat-of-paint/</id>
+        <summary type="html">Over the past few days, I&#x27;ve been thinkering with this blog. Mainly, I got bored
+of the way it looked, and just wanted to have something a bit more neutral.</summary>
+        </entry><entry xml:lang="en">
+        <title>Fedora 22 WiFi problems</title>
+        <published>2015-06-17T00:00:00+00:00</published>
+        <updated>2015-06-17T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/fedora-22-wifi-problems/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/fedora-22-wifi-problems/</id>
+        <summary type="html">How to fix `wl` not being present after an upgrade to Fedora 22</summary>
+        </entry><entry xml:lang="en">
+        <title>Fedora 21 VPN problems</title>
+        <published>2015-02-03T00:00:00+00:00</published>
+        <updated>2015-02-03T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/fedora-21-vpn-problems/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/fedora-21-vpn-problems/</id>
+        <summary type="html">At the office, a few us use Fedora. The main reasons are that it&#x27;s a fairly good
+desktop distribution, and the software is nice and bleeding edge; perfect for developers. But
+sometimes, it breaks.</summary>
+        </entry><entry xml:lang="en">
+        <title>Hash anagram challenge, part 2</title>
+        <published>2015-02-03T00:00:00+00:00</published>
+        <updated>2015-02-03T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/hash-anagram-challenge-part-2/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/hash-anagram-challenge-part-2/</id>
+        <summary type="html">Second analysis of Trustpilot&#x27;s hash anagram programming challenge</summary>
+        </entry><entry xml:lang="en">
+        <title>Hash anagram challenge, part 1</title>
+        <published>2015-02-02T00:00:00+00:00</published>
+        <updated>2015-02-02T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/hash-anagram-challenge-part-1/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/hash-anagram-challenge-part-1/</id>
+        <summary type="html">An analysis of Trustpilot&#x27;s hash anagram programming challenge</summary>
+        </entry><entry xml:lang="en">
+        <title>The bike shed</title>
+        <published>2014-11-10T00:00:00+00:00</published>
+        <updated>2014-11-10T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/bike-shed/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/bike-shed/</id>
+        <summary type="html">Observations on poorly executed change management in a FOSS setting</summary>
+        </entry><entry xml:lang="en">
+        <title>RPM versioning with Jenkins</title>
+        <published>2014-02-01T00:00:00+00:00</published>
+        <updated>2014-02-01T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/rpm-versioning-jenkins/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/rpm-versioning-jenkins/</id>
+        <summary type="html">An approach to solve concurrent version bumping through CI</summary>
+        </entry><entry xml:lang="en">
+        <title>Routing YouTube traffic through a server</title>
+        <published>2013-10-17T00:00:00+00:00</published>
+        <updated>2013-10-17T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/routing-youtube-server/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/routing-youtube-server/</id>
+        <summary type="html">How to MITM YouTube to prevent peering issues.</summary>
+        </entry>
+</feed>
