@@ -1,6 +1,6 @@
 +++
 title = "Fresh coat of paint, part deux"
-date = "2024-02-10"
+date = "2025-02-10"
 description = "Culling old writing and modernising tools"
 
 [taxonomies]
