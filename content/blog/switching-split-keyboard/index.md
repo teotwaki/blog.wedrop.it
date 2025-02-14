@@ -136,3 +136,11 @@ this is that with the homerow mods it can get a bit tiresome to switch from one 
 maintain shift when typing longer uppercase things (constants in Rust or other programming languages
 come to mind). I know there's support for this in ZMK, but I haven't been able to figure out whether
 it's already available in Miryoku.
+
+Edit: This turned out to be a non-issue. Miryoku has this built-in, and the reason I couldn't find
+it is because I use the vi-shifted navigation layout. ZMK has a feature called [caps
+words][caps-words] which, when turned on, capitalises all letters until a non-alphanumerical
+character is pressed. This luckily also includes underscores, so it's a perfect fit for programming.
+On Miryoku this is activated by pressing `nav + /`.
+
+[caps-words]: https://zmk.dev/docs/keymaps/behaviors/caps-word
