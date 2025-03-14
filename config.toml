@@ -241,7 +241,7 @@ feed_icon = true
 
 # Show the full post content in the Atom feed.
 # If it's set to false, only the description or summary will be shown.
-full_content_in_feed = false
+full_content_in_feed = true
 
 # Email address for footer's social section.
 # Protect against spambots:
