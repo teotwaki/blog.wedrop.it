@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.wedrop.it</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>sql</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog - sql</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/tags/sql/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it/tags/sql/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2015-08-25T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/tags/sql/atom.xml</id><entry xml:lang="en">
+        <title>A reply for Tim&#x27;s StackOverflow question</title>
+        <published>2015-08-25T00:00:00+00:00</published>
+        <updated>2015-08-25T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/reply-tim-stackoverflow-question/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/reply-tim-stackoverflow-question/</id>
+        
+            <content type="html">&lt;p&gt;An old Maemo friend &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;timsamoff&#x2F;status&#x2F;635230118160429056&quot;&gt;reached out on Twitter&lt;&#x2F;a&gt; and asked for help regarding some issue he was
+running into using mysqli and PHP. Below is my response that I didn’t have time to post before &lt;a href=&quot;http:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;32161519&#x2F;mysqli-limit-won-t-work-for-me&quot;&gt;the
+question&lt;&#x2F;a&gt; was locked.&lt;&#x2F;p&gt;
+&lt;p&gt;Hi Tim,&lt;&#x2F;p&gt;
+&lt;p&gt;Looks like you’ve had a few issues here :). As a general rule, I like to go back to pure-MySQL, and
+remove as much application logic as possible. In this case, as you’ve already discovered, it’s
+possible to do it all in MySQL.&lt;&#x2F;p&gt;
+&lt;p&gt;But first, let’s do part of what you forgot to do (and which is probably why you got downvoted a
+bit): let’s create a test MySQL table so we can run some queries on it:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;mysql&quot; class=&quot;language-mysql z-code&quot;&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;mysql&amp;gt; create table uploads (
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt;   af_uid int unsigned,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt;   af_fid int unsigned,
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt;   af_dfilename varchar(100),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt;   af_upload_date datetime
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; );
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;mysql&amp;gt; insert into uploads values
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (101, 10, &amp;#39;cat.jpg&amp;#39;, &amp;#39;2015-08-16 14:42:46&amp;#39;),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (101, 10, &amp;#39;dog.jpg&amp;#39;, &amp;#39;2015-08-16 14:43:01&amp;#39;),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (101, 11, &amp;#39;doc.pdf&amp;#39;, &amp;#39;2015-08-16 14:44:23&amp;#39;),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (101, 10, &amp;#39;foo.jpg&amp;#39;, &amp;#39;2015-08-16 14:45:00&amp;#39;),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (101, 10, &amp;#39;bar.jpg&amp;#39;, &amp;#39;2015-08-16 14:45:36&amp;#39;),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (101, 10, &amp;#39;php.jpg&amp;#39;, &amp;#39;2015-08-16 14:46:10&amp;#39;),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (101, 10, &amp;#39;mysql.jpg&amp;#39;, &amp;#39;2015-08-16 14:46:52&amp;#39;),
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; (102, 10, &amp;#39;fubar.jpg&amp;#39;, &amp;#39;2015-08-16 14:51:03&amp;#39;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;From your question, there’s 4 parts to the query you’re trying to write:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;you only want &lt;code&gt;uid = 101&lt;&#x2F;code&gt;;&lt;&#x2F;li&gt;
+&lt;li&gt;you only want &lt;code&gt;fid = 10&lt;&#x2F;code&gt;;&lt;&#x2F;li&gt;
+&lt;li&gt;you want the 5 last items uploaded;&lt;&#x2F;li&gt;
+&lt;li&gt;you only want the 5 first results.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;mysql&quot; class=&quot;language-mysql z-code&quot;&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;mysql&amp;gt; select *
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; from uploads
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; where af_uid = 101
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; and af_fid = 10
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; order by af_upload_date desc
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; limit 5;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+--------+--------+--------------+---------------------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;| af_uid | af_fid | af_dfilename | af_upload_date      |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+--------+--------+--------------+---------------------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | mysql.jpg    | 2015-08-16 14:46:52 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | php.jpg      | 2015-08-16 14:46:10 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | bar.jpg      | 2015-08-16 14:45:36 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | foo.jpg      | 2015-08-16 14:45:00 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | dog.jpg      | 2015-08-16 14:43:01 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+--------+--------+--------------+---------------------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;5 rows in set (0.01 sec)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I’m not seeing &lt;code&gt;limit&lt;&#x2F;code&gt; misbehaving here, as long as the rest of the query does what it’s supposed to
+do. A couple notes to keep in mind for the future, though:&lt;&#x2F;p&gt;
+&lt;p&gt;Please don’t put integer values in quotes. In SQL (and most other languages), there’s no reason to
+do so. You’re just asking the system to do more casting and whatnot. Secondly, try to do most work
+in MySQL, especially when it comes to filtering. Always try to reduce your dataset as much as
+possible in the first step. There are certain situations where it can be useful to do some filtering
+on the client side, but those are micro-optimisations that really only come in very later.&lt;&#x2F;p&gt;
+&lt;p&gt;Anyway, now, let’s dig in to the rest of your question and more specifically, let’s try to figure
+out what was going wrong. If we run your original query directly in MySQL, we’ll notice that we get
+interesting results:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;mysql&quot; class=&quot;language-mysql z-code&quot;&gt;&lt;code class=&quot;language-mysql&quot; data-lang=&quot;mysql&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;mysql&amp;gt; select *
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; from uploads
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; where af_uid = 101
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; order by af_upload_date desc
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    -&amp;gt; limit 5;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+--------+--------+--------------+---------------------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;| af_uid | af_fid | af_dfilename | af_upload_date      |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+--------+--------+--------------+---------------------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | mysql.jpg    | 2015-08-16 14:46:52 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | php.jpg      | 2015-08-16 14:46:10 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | bar.jpg      | 2015-08-16 14:45:36 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     10 | foo.jpg      | 2015-08-16 14:45:00 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;|    101 |     11 | doc.pdf      | 2015-08-16 14:44:23 |
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;+--------+--------+--------------+---------------------+
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;5 rows in set (0.00 sec)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Notice that because of the order in which things appear in the table (due to the &lt;code&gt;order by&lt;&#x2F;code&gt; clause),
+the last item actually has &lt;code&gt;af_fid = 11&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Now, if on the client side, we apply extra filtering as you’re doing with &lt;code&gt;if ($row[&#x27;af_fid&#x27;]) == 10)&lt;&#x2F;code&gt;, it would only make sense that we end up with only 4 results.&lt;&#x2F;p&gt;
+&lt;p&gt;I’m not sure why you saw 3 results, but I’m going to warrant a guess and say that it was due to some
+differences in the code or data, compared to what you posted on SO. Conclusion: if you’d done all
+your filtering in SQL from the get go, you most probably would’ve never hit this roadblock to start
+with.&lt;&#x2F;p&gt;
+&lt;p&gt;Feel free to ping me if you have other questions.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">An old Maemo friend reached out on Twitter and asked for help regarding some
+issue he was running into using mysqli and PHP. Below is my response that I didn&#x27;t have time to
+post before the question was locked.</summary>
+        </entry>
+</feed>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.wedrop.it</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>misc</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog - misc</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/tags/misc/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it/tags/misc/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-10T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/tags/misc/atom.xml</id><entry xml:lang="en">
+        <title>Fresh coat of paint, part deux</title>
+        <published>2025-02-10T00:00:00+00:00</published>
+        <updated>2025-02-10T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/fresh-coat-paint-part-deux/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/fresh-coat-paint-part-deux/</id>
+        
+            <content type="html">&lt;p&gt;Nigh on &lt;a href=&quot;https:&#x2F;&#x2F;blog.wedrop.it&#x2F;blog&#x2F;fresh-coat-of-paint&#x2F;&quot;&gt;a decade ago&lt;&#x2F;a&gt;, I switched from Pelican to Jekyll as my
+blog’s engine. Over the past couple of days, I decided to update the blog engine again with the hope
+that it might get me to write (publicly) again.&lt;&#x2F;p&gt;
+&lt;p&gt;I haven’t published in a long time. My last post was written at the request of a friend who asked me
+to share a childhood memory. And that was in 2019! I think it’s high time to actually start writing
+more things that I can share. Every time I’ve written this kind of post, I’ve promised writing about
+technical things. This time around, however, I feel like maybe it’s time for me to release some
+different words.&lt;&#x2F;p&gt;
+&lt;p&gt;If everything goes to plan, tomorrow should see the arrival of my new keyboard. I decided to dive
+into the world of custom mechanical ergonomic split keyboards, and this one only has 36 keys! I’ll
+see how long it takes me to write an article using it, and maybe that can be a good motivator in
+learning how to type with that keyboard.&lt;&#x2F;p&gt;
+&lt;p&gt;Over the past few years, I’ve noticed that while my typing speed is still quite high (I can still
+easily hit 100 wpm), the quality of my typing is decreased massively. I somehow switched to using my
+right index to hit the space key, and my right hand is moving &lt;em&gt;all over the place&lt;&#x2F;em&gt; in order to hit
+many, many keys. As someone who spends many hours on keyboards every day, I’d like to protect myself
+from future injuries caused by poor typing hygiene. This mostly happens when I’m using my laptop,
+however I’ve started noticing it also when I’m using my full-size keyboard.&lt;&#x2F;p&gt;
+&lt;p&gt;I also decided to cull some old articles. The main reason is that they either said things I
+don’t necessarily agree with anymore, or said it in a way that is maybe not as tactful as I would
+express those opinions today. As an example, I used to have an article that said I don’t enjoy
+managing. But I wrote that article well over a decade ago, and it was mostly during a spat with my
+then-manager. And the truth is, I love managing. I love creating and running teams. So why would I
+keep words that don’t reflect how I feel today?&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Culling old writing and modernising tools</summary>
+        </entry><entry xml:lang="en">
+        <title>Fresh coat of paint</title>
+        <published>2015-08-24T00:00:00+00:00</published>
+        <updated>2015-08-24T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/fresh-coat-of-paint/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/fresh-coat-of-paint/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;blog.wedrop.it&#x2F;blog&#x2F;fresh-coat-of-paint&#x2F;paint-small.jpg&quot; alt=&quot;Paint&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Over the past few days, I’ve been thinkering with this blog. Mainly, I got bored of the way it
+looked, and just wanted to have something a bit more neutral.&lt;&#x2F;p&gt;
+&lt;p&gt;I’m not bashing the way the previous one looked: it had a very definite style that I still very much
+enjoy, but it just didn’t quite feel polished enough. I’ve decided to switch blogging engines (I’m
+now using Jekyll instead of Pelican), and you can find the new theme information on the about page
+if you care. All content, obviously, remains available under a Create Commons license.&lt;&#x2F;p&gt;
+&lt;p&gt;I’ve also taken this new theme opportunity to pimp things a bit. I’m sure you noticed the massive
+cover picture in this article. With the previous design, I prided myself that the page loaded very
+quickly, with just a few kb of data. I’ve decided to go for heavier pages, but at least, it looks
+and feels more &lt;em&gt;dans l’air du temps&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Because we’ll be moving soon, and our internet connectivity is bound to be all over the place, I
+also relocated the hosting of the blog to one of my servers, instead of the raspberry pi hosted at
+home. This should mean better uptime and higher bandwidth.&lt;&#x2F;p&gt;
+&lt;p&gt;As it turns out, this server is starting to get quite loaded. Between all the applications and
+websites it’s running, I’m starting to feel like a proper webhost :). The only issue is that I do it
+for free, most of the time. I might have to start thinking about either getting something beefier,
+or moving back to having multiple dedicated servers at the same time.&lt;&#x2F;p&gt;
+&lt;p&gt;Because my new job doesn’t really require me to work with servers that much, I kind of feel an urge
+to play with mine more. At Interact-IV, I was fixing servers left and right all the time (well,
+maybe not all the time, but regularly). At Realm, we don’t have the same kind of hosting business at
+all, so unless you count the continuous integration server in the Copenhagen office that falls over
+every few days, I really don’t get to exercise my sysadmin skills as much as I used to.&lt;&#x2F;p&gt;
+&lt;p&gt;I guess it’s the right time of year to ask me for help setting up your servers :).&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Over the past few days, I&#x27;ve been thinkering with this blog. Mainly, I got bored
+of the way it looked, and just wanted to have something a bit more neutral.</summary>
+        </entry>
+</feed>

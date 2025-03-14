@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.wedrop.it</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>management</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog - management</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/tags/management/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it/tags/management/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-03-14T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/tags/management/atom.xml</id><entry xml:lang="en">
+        <title>Deliberately choosing the wrong tool</title>
+        <published>2025-03-14T00:00:00+00:00</published>
+        <updated>2025-03-14T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/reply-deliberate-wrong-tool/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/reply-deliberate-wrong-tool/</id>
+        
+            <content type="html">&lt;p&gt;Steve Klabnik &lt;a href=&quot;https:&#x2F;&#x2F;steveklabnik.com&#x2F;writing&#x2F;choosing-languages&#x2F;&quot;&gt;recently wrote&lt;&#x2F;a&gt; about the toxic reactions to Microsoft’s
+release of the Golangified TypeScript compiler. It’s a great article, and I highly recommend it.&lt;&#x2F;p&gt;
+&lt;p&gt;At one point, Steve mentions that he’s not a big fan of the “choose the right tool for the job”
+trope that we hear very often in software engineering circles:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There’s some sort of balance here to be struck. But at the same time, I hate “choose the right
+tool for the job” as a suggestion. Other than art projects, has anyone ever deliberately chosen
+the wrong tool? Often, something that seems like the wrong tool is chosen simply because the
+contextual requirements weren’t obvious to you, the interlocutor.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;I’m not entirely certain how broad the definition of “contextual requirements” is, but provided it
+does not include laziness, I believe that there are many examples where people have chosen the wrong
+tool for the job, deliberately.&lt;&#x2F;p&gt;
+&lt;p&gt;I, myself, am the first one to be guilty of this. And I’m almost entirely convinced that &lt;em&gt;you&lt;&#x2F;em&gt; are,
+too. Growing up, I had a decent collection of pocket knives, and would always have one with me when
+I was roaming the countryside. My pocket knife was a pry bar, a screw driver, a bottle opener, a
+coal rake, a skewer, a windlass, and a toothpick.&lt;&#x2F;p&gt;
+&lt;p&gt;Furthermore, how many of us used our tongues to see if a 9V battery still had a charge in it or not?
+I still readily reach for a butter knife when I need to unscrew a flathead screw without opening my
+toolbox. How many PMs have used Visio or PowerPoint as a project management tool? How many build
+systems started out as “a quick shell script”? How many businesses have &lt;em&gt;critical&lt;&#x2F;em&gt; Excel documents
+as the source of truth, or even as an entire database?&lt;&#x2F;p&gt;
+&lt;p&gt;In some cases, one might argue that these choices were made out of necessity. Maybe that’s the
+&lt;em&gt;contextual requirement&lt;&#x2F;em&gt; factor Steve mentions. Is it really, though? One of the most well-known
+&lt;a href=&quot;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;1732454&quot;&gt;StackOverflow answers&lt;&#x2F;a&gt; documents why one should never use regexes to try and
+parse HTML. It is perhaps one of the best examples of Maslow’s hammer that we have for software
+development. No matter how many warnings, no matter how complex the grammar, once people grasp the
+basics of regular expressions they believe they can parse anything with them. After years of that
+answer being published, and legions of regex aficionados “Yes, but…”’ing him, the author gave up:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I think it’s time for me to quit the post of Assistant Don’t Parse HTML With Regex Officer. No
+matter how many times we say it, they won’t stop coming every day… every hour even. It is a lost
+cause, which someone else can fight for a bit. So go on, parse HTML with regex, if you must. It’s
+only broken code, not life and death.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;So, why would someone deliberately choose the wrong tool? Laziness is, I think, a big factor.
+Ignorance and desperation are other reasons I could trivially understand. Steve gives art a free
+pass—and he’s right. Sometimes, using the explicitly wrong tool makes a statement or teaches a
+lesson.&lt;&#x2F;p&gt;
+&lt;p&gt;By “contextual requirements”, Steve likely meant that in some cases, a project might adopt a choice
+that could be considered objectively inferior by externals, while still being the “correct” choice
+for that specific team, given the constraints they are facing. And in a way, the same charity could
+be extended to me using my pen knife as a pry bar to open a can of paint: there was no good
+alternative immediately available, therefore it was the right choice, because the alternative would
+have been to not do something. As Teddy Roosevelt put it, “the next best thing is the &lt;em&gt;wrong&lt;&#x2F;em&gt;
+thing”.&lt;&#x2F;p&gt;
+&lt;p&gt;There is a trait in toxic management to try and give everything a positive spin, and therefore we
+shouldn’t call out errors. Sometimes it’s because it’s not a business priority to fix that mistake,
+and therefore it’s easier to not call it a mistake at all. Other times, it’s because strong egos
+can’t accept the egg-on-face effect of having suboptimal decisions attached to their legacy. This
+often happens with projects, and wanting to call projects a success, even if it ended up costing 5x
+more than originally planned and was delivered 2 years behind schedule (of an original 12 month
+schedule). I still hope I’ll one day end up in a company that is able to call a project a failure,
+and learn from the mistakes, instead of insisting on calling it a success, and ingraining the
+mistakes as successful ways of doing something.&lt;&#x2F;p&gt;
+&lt;p&gt;This mindset—that everything must be framed as an exclusive success—could actually be why some
+of these decisional blunders continue to be made. Instead of admitting that something didn’t work,
+we double down on poor decisions.&lt;&#x2F;p&gt;
+&lt;p&gt;So therefore, there’s an aspect of timing, or perspective: if you don’t know something is the wrong
+tool when you use it, then it isn’t the wrong tool in that moment. Hindsight might reveal that
+something was objectively the wrong tool. And context helps to explain or justify why a decision was
+made, and how that decision might even make sense for a given team.&lt;&#x2F;p&gt;
+&lt;p&gt;But we should still be able to label things as a bad choice when they are identified, even if the
+only tangible benefit of doing so is to prevent making the same bad choice in the future.&lt;&#x2F;p&gt;
+&lt;p&gt;Now, I’d like to clarify something: I don’t believe Microsoft switching to Golang instead of
+&lt;code&gt;$OTHER_LANG&lt;&#x2F;code&gt; is a mistake in any way, shape or form. As I &lt;a href=&quot;https:&#x2F;&#x2F;mastodon.online&#x2F;@teotwaki&#x2F;114151731751082435&quot;&gt;expressed previously&lt;&#x2F;a&gt;, I
+think it’s wonderful that Microsoft picked Golang, if and only if because this might finally curb
+the current trend of pigeonholing programming languages into a singular purpose.&lt;&#x2F;p&gt;
+&lt;p&gt;Back in the day, Ruby gained insane popularity because it had an amazing development experience. TDD
+tools would happily flash at you in your terminal as you implemented features and completed your
+backlog. The code was so expressive that what started as APIs became DSLs, and it was glorious.
+Writing Ruby put a smile on my face. Many languages still haven’t caught up to the absolutely
+incredible devex that was achieved, in a completely IDE-agnostic way.&lt;&#x2F;p&gt;
+&lt;p&gt;We used Ruby for web, for configuration management, for package management, to manage virtual
+machines, and to run exploits. And it was used for so many things exactly because of the devex.&lt;&#x2F;p&gt;
+&lt;p&gt;Fish recently rewrote their codebase from C++ to Rust—not for performance, but for fun. That’s the
+energy we need to bring back into programming. As Steve wrote:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You should write programs in the language you want to.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Or to put it differently: trying to hammer in a nail using a screwdriver is a case of using the
+wrong tool for the job. Using a good programming language the team is comfortable and has fun with,
+&lt;strong&gt;isn’t&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">A quick reply to Steve Klabnik, about bias in tooling.</summary>
+        </entry><entry xml:lang="en">
+        <title>The bike shed</title>
+        <published>2014-11-10T00:00:00+00:00</published>
+        <updated>2014-11-10T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/bike-shed/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/bike-shed/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;blog.wedrop.it&#x2F;blog&#x2F;bike-shed&#x2F;bike-shed-small.jpg&quot; alt=&quot;Colourful bike shed&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Please note: This article was initially published on my previous blog, called &lt;em&gt;Arrogant and
+Condescending&lt;&#x2F;em&gt;, on 2nd February 2011.&lt;&#x2F;p&gt;
+&lt;p&gt;A couple of months ago, Mohamad, one very active community member in Maemo was lamenting about the
+closed-source components of the operating system. The media player, the conversations, the
+application manager: these are all bits and pieces that lock the user away from freedom. And  that
+is, obviously, a bad thing.&lt;&#x2F;p&gt;
+&lt;p&gt;As the conversation flowed, we pitched the idea of reimplementing the media player completely;
+writing it from scratch, copying the user interface (as to not alienate users). Apart from a few
+very serious flaws in Nokia’s current implementation, we wouldn’t actually try to improve change too
+much, and then let the community decide what is best for the media player. Basically, we wanted to
+gift the media player’s source code to the Community – an act of faith that Nokia has never deigned
+to grant its customers.&lt;&#x2F;p&gt;
+&lt;p&gt;A few weeks later, and we’re starting to get somewhere. Mohamad has done amazing work on the
+graphical user interface, various contributors have donated time and brain matter in order to give
+us a rudimentary clone. I was very pleased. Then, it was decided to “announce” this development
+effort properly to the community.&lt;&#x2F;p&gt;
+&lt;p&gt;People deciding to work, and actually doing it, and for a good cause, nothing could be wrong, right?
+&lt;em&gt;Wrong&lt;&#x2F;em&gt;. We got &lt;strong&gt;slammed&lt;&#x2F;strong&gt;. People started flaming about the feasability, about the usability,
+about the needability; all in a very unobfuscated demeanour of stupidity.&lt;&#x2F;p&gt;
+&lt;p&gt;The loudest people were well known Community Trolls: people who seemingly enjoy annoying others and
+engaging in relatively counter-productive behaviour. At the same time, the Community SSU (allowing
+the Community to manage the software updates, rather than relying on Nokia, which has abandoned the
+platform) was announced by very much the same group of people as those responsible for the Media
+Player reimplementation; by and large the same trollish and counter-productive responses were given
+to this project as well.&lt;&#x2F;p&gt;
+&lt;p&gt;I didn’t understand this. Why, again and again, would people start yelling and screaming as soon as
+something was done. I first naively attributed it to the fact people don’t like change, but then I
+noticed, somehow, the same behaviour at work. Luckily &lt;em&gt;not&lt;&#x2F;em&gt; “the same” – we don’t have people
+behaving like hooligans as soon as one offers food for thought – however both reactions couldn’t be
+entirely happening at random.&lt;&#x2F;p&gt;
+&lt;p&gt;There are two discussions at my company, in particular, that have “leaked” in that sense. One was
+about Source Control Management, a purely technical discussion that, yes, – hypothetically, could
+have – affected a few people, the other about the technical architecture of a system-wide method of
+communication. Both discussions stalled in quite a dramatic manner, mostly because everyone wanted
+to see their own ideology put forward.&lt;&#x2F;p&gt;
+&lt;p&gt;In full disclosure, I pitched the SCM-discussion, and having rather not adapted to the French’s
+inability to understand candour (’t was my first week, after all), may be partly to blame for how
+badly it degenerated.&lt;&#x2F;p&gt;
+&lt;p&gt;This being said, the other discussion, about some architectural decision, I believe is an excellent
+example of misdirected management: instead of asking people how they can contribute (read: help make
+the current solution better), you ask them if they see an issue. The immediate response, usually, is
+“Yes, however we don’t have it if we do it &lt;em&gt;my way&lt;&#x2F;em&gt;”. Don’t ask them to offer a solution, insist
+that they &lt;strong&gt;improve the current one&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;I then started searching, online, as I would research a technical problem. At some point, someone on
+Twitter pointed me towards a seemingly random, if well named, &lt;a href=&quot;http:&#x2F;&#x2F;bikeshed.org&#x2F;&quot;&gt;website&lt;&#x2F;a&gt;. I’ll quote a bit of it
+(though, reading the whole page is definitely worth it):&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Parkinson shows how you can go in to the board of directors and get approval for building a
+multi-million or even billion dollar atomic power plant, but if you want to build a bike shed you
+will be tangled up in endless discussions.&lt;&#x2F;p&gt;
+&lt;p&gt;Parkinson explains that this is because an atomic plant is so vast, so expensive and so
+complicated that people cannot grasp it, and rather than try, they fall back on the assumption
+that somebody else checked all the details before it got this far.&lt;&#x2F;p&gt;
+&lt;p&gt;[…]&lt;&#x2F;p&gt;
+&lt;p&gt;A bike shed on the other hand. Anyone can build one of those over a weekend, and still have time
+to watch the game on TV. So no matter how well prepared, no matter how reasonable you are with
+your proposal, somebody will seize the chance to show that he is doing his job, that he is paying
+attention, that he is &lt;em&gt;here&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Whoa. Poul-Henning Kamp, where the hell have you been all this time? There really isn’t much more to
+say; PHK’s text is so painfully insightful and well written that I don’t have any words.&lt;&#x2F;p&gt;
+&lt;p&gt;We all have our bike sheds to build. But frankly, I’d rather not build them over the weekend. So
+when you hit reply, think very, &lt;em&gt;very&lt;&#x2F;em&gt; carefully about what you are going to type next. Be extremely
+thorough, and &lt;em&gt;assume good faith&lt;&#x2F;em&gt;. Put your ego aside, and let the person who launched an initiative
+drive it. You may be piqued that you didn’t do it, that they implemented an idea before you had the
+time; the truth is you should embrace this.&lt;&#x2F;p&gt;
+&lt;p&gt;Regardless of the context in which you interpret these words (an Open Source project, your job),
+please remember that in most cases everyone is sharing the same goal; everyone is trying to &lt;em&gt;further
+things&lt;&#x2F;em&gt;, and &lt;strong&gt;improve things&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;It is not because you think you have the intellectual, or technological, or managerial &lt;em&gt;right&lt;&#x2F;em&gt; to
+comment on something that you should.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Observations on poorly executed change management in a FOSS setting</summary>
+        </entry>
+</feed>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.wedrop.it</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>keyboard</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog - keyboard</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/tags/keyboard/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it/tags/keyboard/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-13T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/tags/keyboard/atom.xml</id><entry xml:lang="en">
+        <title>Switching to a split keyboard</title>
+        <published>2025-02-13T00:00:00+00:00</published>
+        <updated>2025-02-13T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/switching-split-keyboard/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/switching-split-keyboard/</id>
+        
+            <content type="html">&lt;p&gt;I’m not going to lie: I’m typing this at an excruciatingly low speed. For the past twenty years I’ve
+been used to typing nearly as fast as I could think, or at the very least, talk. This previous
+sentence, however, took me well over a minute to write down. As I mentioned a few days ago, I have
+decided to switch to a new keyboard layout. While the layout itself is still QWERTY, I am now using
+what is commonly referred to as a custom split ortholinear staggered-column mechanical keyboard.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;blog.wedrop.it&#x2F;blog&#x2F;switching-split-keyboard&#x2F;chocofi.jpg&quot; alt=&quot;Chocofi&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;As you can probably tell, this keyboard has significantly fewer keys than a typical one, and that’s
+sort of the point. This kind of keyboard layout is designed to try and reduce the amount of
+movements your hand is making in order to reach all the keys on your keyboard.&lt;&#x2F;p&gt;
+&lt;p&gt;The learning curve has been absolutely brutal. I was able to get a single time over 50 wpm, and that
+was definitely a fluke. After a couple days of use, I am now consistently getting 30-40 wpm. I’m not
+convinced attempting to write a lot during this transition phase is the greatest of ideas, but it
+seems to me like the only way out is to practice.&lt;&#x2F;p&gt;
+&lt;p&gt;Interestingly enough, one of the keys I struggle with the most is the c letter, which is tucked
+below the d key. This means that I should in theory use my middle finger in order to hit it, but on
+regular keyboards I seem to have taken the habit of using my index finger. The result is that nearly
+every time I try to type c, I end up typing v. Even now, when I was consciously thinking through the
+process and explaining it.&lt;&#x2F;p&gt;
+&lt;p&gt;The next section will be a bit more technical as I document things that were not immediately clear
+to me.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;homerow-mods&quot;&gt;Homerow mods&lt;&#x2F;h2&gt;
+&lt;p&gt;Beyond the key layout difference, the biggest change is the use of homerow mods in order to access
+the keys most people have around their boards. Most keyboards tend to come with a couple shift keys,
+some control, alt and even super (Windows&#x2F;Mac) keys. These don’t exist on a 36 key keyboard, so you
+have to get creative.&lt;&#x2F;p&gt;
+&lt;p&gt;One way the community has solved this is by inventing homerow mods. What it means is that the keys
+on your homerow (e.g.: asdf-hjkl) have double duty. If I just tap ‘j’, I obviously get ‘j’. However
+if I hold ‘j’ for just a short while, it turns into a shift key. F does the same thing, just on the
+other side of the keyboard, in case there are collisions. The same is true for my control keys (d
+and k), alt (s and l) and super (a and ’).&lt;&#x2F;p&gt;
+&lt;p&gt;This is a major shift (pun intended) in how I type, and have to think about typing.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;firmware-customisation&quot;&gt;Firmware customisation&lt;&#x2F;h2&gt;
+&lt;p&gt;This keyboard is based on the nice!nano v2 microcontrollers. These provide wireless connectivity, so
+I am using the &lt;a href=&quot;https:&#x2F;&#x2F;zmk.dev&#x2F;&quot;&gt;ZMK&lt;&#x2F;a&gt; firmware (ZMK appears to be more geared towards wireless keyboards whereas
+&lt;a href=&quot;https:&#x2F;&#x2F;qmk.fm&#x2F;&quot;&gt;QMK&lt;&#x2F;a&gt; seems to be mostly wired). I decided to start with a layout based on the reasonably popular
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;manna-harbour&#x2F;miryoku&quot;&gt;Miryoku&lt;&#x2F;a&gt; layout. I talk about a layout, however I have decided to stick with QWERTY for
+now. The layout, therefore, only refers to the different layers I have on the keyboard, and where
+keys are positioned within those.&lt;&#x2F;p&gt;
+&lt;p&gt;The first thing I wanted to do was adding combos, or chords I’ve grown quite used to over the past
+few months. Here are the chords I want to achieve; all for Danish:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;‘o’ and ‘e’ to produce ‘ø’,&lt;&#x2F;li&gt;
+&lt;li&gt;‘a’ and ‘e’ to produce ‘æ’,&lt;&#x2F;li&gt;
+&lt;li&gt;‘a’ and ‘o’ to produce ‘å’.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;In order to achieve this, I had to define some macros and combos in the firmware:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; class=&quot;language-c z-code&quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-arithmetic z-c&quot;&gt;&#x2F;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;    macros &lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;        &lt;span class=&quot;z-entity z-name z-label z-c&quot;&gt;oe&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-c&quot;&gt;:&lt;&#x2F;span&gt; oe &lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;            compatible &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;zmk,behavior-macro&lt;span class=&quot;z-punctuation z-definition z-string z-end z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;            #binding&lt;span class=&quot;z-keyword z-operator z-arithmetic z-c&quot;&gt;-&lt;&#x2F;span&gt;cells &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-c&quot;&gt;0&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;            wait&lt;span class=&quot;z-keyword z-operator z-arithmetic z-c&quot;&gt;-&lt;&#x2F;span&gt;ms &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;MACRO_TIMEOUT&lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;            bindings &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-c&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;macro_tap &lt;span class=&quot;z-keyword z-operator z-c&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;kp &lt;span class=&quot;z-meta z-function-call z-c&quot;&gt;&lt;span class=&quot;z-variable z-function z-c&quot;&gt;RA&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-c&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c&quot;&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;O&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-c&quot;&gt;&lt;span class=&quot;z-meta z-group z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-c&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;        &lt;span class=&quot;z-punctuation z-section z-block z-end z-c&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;    &lt;span class=&quot;z-punctuation z-section z-block z-end z-c&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;    combos &lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;        compatible &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;zmk,combos&lt;span class=&quot;z-punctuation z-definition z-string z-end z-c&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;        combo_oe &lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-c&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;            timeout&lt;span class=&quot;z-keyword z-operator z-arithmetic z-c&quot;&gt;-&lt;&#x2F;span&gt;ms &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;COMBO_TIMEOUT_SLOW&lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;            key&lt;span class=&quot;z-keyword z-operator z-arithmetic z-c&quot;&gt;-&lt;&#x2F;span&gt;positions &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-c&quot;&gt;3&lt;&#x2F;span&gt; &lt;span class=&quot;z-constant z-numeric z-integer z-decimal z-c&quot;&gt;9&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;            bindings &lt;span class=&quot;z-keyword z-operator z-assignment z-c&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-c&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;oe&lt;span class=&quot;z-keyword z-operator z-comparison z-c&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;        &lt;span class=&quot;z-punctuation z-section z-block z-end z-c&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;    &lt;span class=&quot;z-punctuation z-section z-block z-end z-c&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-c&quot;&gt;&lt;span class=&quot;z-meta z-block z-c&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-c&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-c&quot;&gt;;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The full customisation can be found &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;teotwaki&#x2F;miryoku_zmk&#x2F;blob&#x2F;master&#x2F;miryoku&#x2F;custom_behaviors.dtsi&quot;&gt;here&lt;&#x2F;a&gt; (remember to include this file
+otherwise it will have no effect). The most confusing thing in this was actually that the key
+numbers did not line up with the physical keyboard I had in front of me. Because this
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pashutk&#x2F;chocofi&quot;&gt;chocofi&lt;&#x2F;a&gt; keyboard is quite similar to a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;foostan&#x2F;crkbd&quot;&gt;corne&lt;&#x2F;a&gt; keyboard, that’s the layout that is
+used. Miryoku doesn’t use the extra keys on a corne anyway. The big difference is that the corne has
+42 keys whereas the chocofi only has 36. So instead of just being able to count the keys on the
+physical object in front of me, I had to mentally remove some imaginary key numbers.&lt;&#x2F;p&gt;
+&lt;p&gt;So what does this actually do? The combo says that if keys 3 and 9 are pressed simultaneously within
+certain timeout, the macro should be invoked. The macro says that when it is invoked, it will
+generate a single key press of &lt;code&gt;RA(O)&lt;&#x2F;code&gt;, which means &lt;code&gt;right alt + O&lt;&#x2F;code&gt;, which on my Mac, produces an ø.
+I suppose that this might be done without the use of a macro, just by using a combo alone, however I
+need to add support for the uppercase form of these letters as well. I don’t expect that will be
+doable without a macro.&lt;&#x2F;p&gt;
+&lt;p&gt;For future reference, here is what the key mapping looks like on a chocofi for ZMK:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;-------------------------------------------
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│  1   2   3   4   5 │  6   7   8   9  10 │
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│ 13  14  15  16  17 │ 18  19  20  21  22 │
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;│ 25  26  27  28  29 │ 30  31  32  33  34 │
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;--------- 36  37  38 │ 39  40  41 ---------
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;          -----------------------
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;At the moment, I am focusing my attention on getting this keyboard to play nicely with my Mac only,
+and will add the complexity of other OS’ later on. On my current TODO list is fixing the layout as I
+don’t currently have access to a tilde key, which is kind of important for me. I also need to
+improve the 3D-printed case of the keyboard so that it sits in a more stable way on my desk. At the
+moment it’s slightly janky and tends to tilt when I press some keys which is not entirely
+comfortable. I might also need to work on the timing of some chording&#x2F;tapping behaviour; I sometimes
+generate unwanted key presses when I start typing a bit faster, especially with some rolls such as
+‘st’.&lt;&#x2F;p&gt;
+&lt;p&gt;Another comfort I’d like to get back somehow would be some form of caps lock. The main reason for
+this is that with the homerow mods it can get a bit tiresome to switch from one hand to the other to
+maintain shift when typing longer uppercase things (constants in Rust or other programming languages
+come to mind). I know there’s support for this in ZMK, but I haven’t been able to figure out whether
+it’s already available in Miryoku.&lt;&#x2F;p&gt;
+&lt;p&gt;Edit: This turned out to be a non-issue. Miryoku has this built-in, and the reason I couldn’t find
+it is because I use the vi-shifted navigation layout. ZMK has a feature called &lt;a href=&quot;https:&#x2F;&#x2F;zmk.dev&#x2F;docs&#x2F;keymaps&#x2F;behaviors&#x2F;caps-word&quot;&gt;caps
+words&lt;&#x2F;a&gt; which, when turned on, capitalises all letters until a non-alphanumerical
+character is pressed. This luckily also includes underscores, so it’s a perfect fit for programming.
+On Miryoku this is activated by pressing &lt;code&gt;nav + &#x2F;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Documenting my transition to custom split mechanical keyboards.</summary>
+        </entry>
+</feed>
