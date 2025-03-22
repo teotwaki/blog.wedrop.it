@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.wedrop.it</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>freebsd</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog - freebsd</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/tags/freebsd/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it/tags/freebsd/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2016-04-23T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/tags/freebsd/atom.xml</id><entry xml:lang="en">
+        <title>My FreeBSD setup</title>
+        <published>2016-04-23T00:00:00+00:00</published>
+        <updated>2016-04-23T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/freebsd-setup/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/freebsd-setup/</id>
+        
+            <content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;Update in 2025&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt;: After using FreeBSD for a few years, the little netbook gave up the ghost. I
+no longer use FreeBSD as a daily driver. I’m leaving the information below in case I ever pick
+FreeBSD up again.&lt;&#x2F;p&gt;
+&lt;p&gt;Over the past few years, I’ve been feeling more and more ill at ease with my Linux systems. The main
+reason for this is systemd. I won’t go into a full-on anti-systemd rant in this post; there has been
+enough ink spilled on that topic.&lt;&#x2F;p&gt;
+&lt;p&gt;Initially, I tried out OpenBSD, but had a bit of trouble getting going started (mainly, I couldn’t
+get neovim to build), and the system performance on my netbook was pretty bad. I switched to
+FreeBSD, assuming that some of these things would be better, and indeed, they were. Neovim is just a
+&lt;code&gt;pkg&lt;&#x2F;code&gt; command away (even though it’s version 0.1.2), and the whole system feels incredibly
+responsive.&lt;&#x2F;p&gt;
+&lt;p&gt;I also decided to drop KDE and switch to &lt;a href=&quot;https:&#x2F;&#x2F;i3wm.org&#x2F;&quot;&gt;i3, the window manager&lt;&#x2F;a&gt;. I never used
+KDE on my netbook, on that one I always kept OpenBox. I’m absolutely in love with i3. It’s very
+lightweight, though requires a pretty fair amount of configuration in order to be usable (or at the
+very minimum, fit my needs).&lt;&#x2F;p&gt;
+&lt;p&gt;After a few days of mucking about, this is what my setup looks like:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;blog.wedrop.it&#x2F;blog&#x2F;freebsd-setup&#x2F;netbook-screenshot.png&quot; alt=&quot;Netbook screenshot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;And this is what my lock screen looks like:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;blog.wedrop.it&#x2F;blog&#x2F;freebsd-setup&#x2F;lock-screen.png&quot; alt=&quot;Lock screen&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I’ll keep this article updated with my configuration, mostly as a way to help myself set up new
+systems. Some of this stuff might end up in my dotfiles repository, though.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;base-system&quot;&gt;Base system&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;&#x2F;etc&#x2F;sysctl.conf&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;conf&quot; class=&quot;language-conf z-code&quot;&gt;&lt;code class=&quot;language-conf&quot; data-lang=&quot;conf&quot;&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enchance shared memory X11 interface
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;ipc&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;shmmax&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;67108864&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;ipc&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;shmall&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;32768&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enhance desktop responsiveness under high CPU use (200&#x2F;224)
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;sched&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;preempt_thresh&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;224&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Bump up maximum number of open files
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;maxfiles&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;200000&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Disable PC speaker
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;hw&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;syscons&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;bell&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;0&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Shared memory for Chromium
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;ipc&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;shm_allow_removed&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;1&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Allow users to mount disks
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;vfs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;usermount&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;1&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Synaptics configuration
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;hw&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;psm&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;synaptics&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;min_pressure&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;40&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Suspend on lid close
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;hw&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;acpi&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;lid_switch_state&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-constant z-genconfig&quot;&gt;S3&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;&#x2F;boot&#x2F;loader.conf&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;conf&quot; class=&quot;language-conf z-code&quot;&gt;&lt;code class=&quot;language-conf&quot; data-lang=&quot;conf&quot;&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Load intel graphics driver
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;i915kms_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Reduce GPU power consumption (SandyBridge&#x2F;IvyVridge)
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;drm&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;i915&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;enable_rc6&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;7&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Allow loading of the realtek firmware (wifi dongle)
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;legal&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;realtek&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;license_ack&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;1&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Use new graphical console driver
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;vty&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;vt
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Devil worship in loader logo
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;loader_logo&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;beastie&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Boot-time kernel tuning
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;ipc&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;shmseg&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;1024&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;ipc&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;shmmni&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;1024&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;kern&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;maxproc&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;10000&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Load MMC&#x2F;SD card-reader support
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;mmc_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;mmcsd_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;sdhci_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Access ATAPI devices through the CAM subsystem
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;atapicam_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Filesystems in Userspace
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;fuse_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Intel Core thermal sensors
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;coretemp_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# In-memory filesystems
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;tmpfs_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Asynchronous I&#x2F;O
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;aio_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Handle unicode on removable media
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;libiconv_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;libmchain_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;cd9660_iconv_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;msdosfs_iconv_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Load sound subsystem
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;snd_driver_load&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enable better trackpad support
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;hw&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;psm&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;.&lt;&#x2F;span&gt;synaptics_support&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric z-genconfig&quot;&gt;1&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;&#x2F;etc&#x2F;rc.conf&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;conf&quot; class=&quot;language-conf z-code&quot;&gt;&lt;code class=&quot;language-conf&quot; data-lang=&quot;conf&quot;&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;hostname&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;somemachine.home.wedrop.it&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enable DHCP but don&amp;#39;t let it block the boot process
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;background_dhclient&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Try to configure re0 (wired) on boot
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;ifconfig_re0&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;DHCP&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Clone urtwn0 to a device called wlan0
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;wlans_urtwn0&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;wlan0&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Configure wlan0 to connect through WPA and use DHCP
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;ifconfig_wlan0&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;WPA SYNCDHCP&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;keymap&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;uk.iso.kdb&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Remote logins
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;sshd_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Set dumpdev to &amp;quot;AUTO&amp;quot; to enable crash dumps, &amp;quot;NO&amp;quot; to disable
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;dumpdev&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;AUTO&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;moused_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# powerd: hiadaptive speed while on AC power, adaptive while on battery
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;powerd_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;powerd_flags&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;-a hiadaptive -b adaptive&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Reduce power consumption by using higher C-states than the default of C1
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;performance_cx_lowest&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;Cmax&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;economy_cx_lowest&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;Cmax&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enable bluetooth
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;hcsecd_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;spdp_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Synchronize system time
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;ntpd_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Let ntpd make time jumps larger than 1000sec
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;ntpd_flags&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;-g&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enable dbus (IPC)
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;dbus_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enable hald (hardware detection), should not be required.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# hald_enable=&amp;quot;YES&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-comment z-genconfig&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-genconfig&quot;&gt;# Enable graphical login
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-genconfig&quot;&gt;&lt;span class=&quot;z-meta z-param z-genconfig&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-genconfig&quot;&gt;slim_enable&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-genconfig&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-genconfig&quot;&gt;&amp;quot;YES&amp;quot;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;user-configuration&quot;&gt;User configuration&lt;&#x2F;h2&gt;
+&lt;p&gt;I haven’t documented or stored all of this to my dotfiles repositories yet. Come back later? :)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;installed-ports&quot;&gt;Installed ports&lt;&#x2F;h2&gt;
+&lt;p&gt;Following is a list of packages that I usually install pretty quickly after setting up a new system:&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;terminal-and-shell-stuff&quot;&gt;Terminal and shell stuff&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pv (pipe viewer)&lt;&#x2F;li&gt;
+&lt;li&gt;rxvt-unicode (terminal)&lt;&#x2F;li&gt;
+&lt;li&gt;scrot (screen capture)&lt;&#x2F;li&gt;
+&lt;li&gt;sudo&lt;&#x2F;li&gt;
+&lt;li&gt;the_silver_searcher (grep replacement for vim)&lt;&#x2F;li&gt;
+&lt;li&gt;zsh (shell)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;development&quot;&gt;Development&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;neovim (from source)&lt;&#x2F;li&gt;
+&lt;li&gt;autotools&lt;&#x2F;li&gt;
+&lt;li&gt;clang38&lt;&#x2F;li&gt;
+&lt;li&gt;cmake&lt;&#x2F;li&gt;
+&lt;li&gt;git&lt;&#x2F;li&gt;
+&lt;li&gt;gmake (BSD-make is sadly not very supported)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;desktop-environment&quot;&gt;Desktop environment&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;dmenu (app launcher for i3)&lt;&#x2F;li&gt;
+&lt;li&gt;feh (background manager)&lt;&#x2F;li&gt;
+&lt;li&gt;firefox&lt;&#x2F;li&gt;
+&lt;li&gt;git-gui&lt;&#x2F;li&gt;
+&lt;li&gt;i3-gaps (from source)&lt;&#x2F;li&gt;
+&lt;li&gt;keepass (password manager)&lt;&#x2F;li&gt;
+&lt;li&gt;slim (graphical login)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I’m an absolute FreeBSD noob, so some of the stuff listed here is probably suboptimal. Feel free to
+tell me on Twitter or drop me an email if there’s anything I should change.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Documentation of my old FreeBSD setup</summary>
+        </entry>
+</feed>

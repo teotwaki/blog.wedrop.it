@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.wedrop.it</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>scala</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog - scala</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/tags/scala/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it/tags/scala/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-03-12T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/tags/scala/atom.xml</id><entry xml:lang="en">
+        <title>Getting started with Scala on macOS in 2025</title>
+        <published>2025-03-12T00:00:00+00:00</published>
+        <updated>2025-03-12T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/scala-mac-2025/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/scala-mac-2025/</id>
+        
+            <content type="html">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.scala-lang.org&#x2F;&quot;&gt;Scala&lt;&#x2F;a&gt; is a functional programming language that I’ve come across in the past, but it
+never stuck in my tool belt. One of my clients has asked me to help them with a billing project, and
+as this is a Scala shop, I figured it would make sense to get a head start and setup my workstation
+to be ready to work with Scala again.&lt;&#x2F;p&gt;
+&lt;p&gt;The best way to get started with Scala is by using &lt;a href=&quot;https:&#x2F;&#x2F;get-coursier.io&#x2F;&quot;&gt;Coursier&lt;&#x2F;a&gt;; an application and artifact
+manager for Scala. The official docs for both &lt;a href=&quot;https:&#x2F;&#x2F;www.scala-lang.org&#x2F;download&#x2F;&quot;&gt;Scala&lt;&#x2F;a&gt; and
+&lt;a href=&quot;https:&#x2F;&#x2F;get-coursier.io&#x2F;docs&#x2F;cli-installation&quot;&gt;Coursier&lt;&#x2F;a&gt; seem to provide &lt;del&gt;incorrect&lt;&#x2F;del&gt;suboptimal information for installation.
+Both sources recommend installing &lt;code&gt;coursier&#x2F;formulas&#x2F;coursier&lt;&#x2F;code&gt; using &lt;code&gt;brew&lt;&#x2F;code&gt;, however that formula seems
+to install an Intel binary, which obviously doesn’t run on Apple silicon.
+Instead, the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;coursier&#x2F;coursier&#x2F;issues&#x2F;3292&quot;&gt;following workaround&lt;&#x2F;a&gt; appears to work
+quite well:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;brew&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; install coursier&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;coursier&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; setup&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Once you have coursier installed and setup, you should have a fully functional Scala build
+environment. Here’s the usual sanity check:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scala&quot; class=&quot;language-scala z-code&quot;&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;z-source z-scala&quot;&gt;&lt;span class=&quot;z-meta z-annotation z-scala&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-annotation z-scala&quot;&gt;@&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-annotation z-identifier z-scala&quot;&gt;&lt;span class=&quot;z-variable z-annotation z-scala&quot;&gt;main&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-storage z-type z-function z-scala&quot;&gt;def&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-function z-scala&quot;&gt;hello&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-scala&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-scala&quot;&gt;)&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-scala&quot;&gt;=&lt;&#x2F;span&gt; println&lt;span class=&quot;z-punctuation z-section z-group z-begin z-scala&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-scala&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-scala&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Hello, World!&lt;span class=&quot;z-punctuation z-definition z-string z-end z-scala&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-scala&quot;&gt;)&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Which you can run with &lt;code&gt;scala run hello.scala&lt;&#x2F;code&gt;. The output should look something like:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;text&quot; class=&quot;language-text z-code&quot;&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Compiling project (Scala 3.6.4, JVM (23))
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Compiled project (Scala 3.6.4, JVM (23))
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;Hello, World!
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Fantastic. Now what’s left to do is to enable code completion for Scala in nvim. &lt;code&gt;:LazyExtras&lt;&#x2F;code&gt;
+should offer scala as a suggested language if you’re editing the &lt;code&gt;hello.scala&lt;&#x2F;code&gt; file above, after
+which a &lt;code&gt;:MetalsInstall&lt;&#x2F;code&gt; should install everything needed to get up and running.&lt;&#x2F;p&gt;
+&lt;p&gt;Once Metals is installed, you should be able to see proper code completion. Sadly, type hints in the
+form of inlays doesn’t seem to be supported. This is an extremely useful feature that I’ve come to
+absolute love when writing Rust, and I don’t understand that it’s not a priority for most LSPs. I
+find it almost universally useful, regardless of the language.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Collection of notes on how to setup my workstation to work with Scala.</summary>
+        </entry>
+</feed>

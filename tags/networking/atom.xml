@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.wedrop.it/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.wedrop.it</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>networking</tabi:current_section>
+    </tabi:metadata><title>Drop a Blog - networking</title>
+        <subtitle>Rants and musings of a software architect</subtitle>
+    <link href="https://blog.wedrop.it/tags/networking/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.wedrop.it/tags/networking/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2015-02-03T00:00:00+00:00</updated>
+    <id>https://blog.wedrop.it/tags/networking/atom.xml</id><entry xml:lang="en">
+        <title>Fedora 21 VPN problems</title>
+        <published>2015-02-03T00:00:00+00:00</published>
+        <updated>2015-02-03T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/fedora-21-vpn-problems/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/fedora-21-vpn-problems/</id>
+        
+            <content type="html">&lt;p&gt;At the office, a few us use Fedora. The main reasons are that it’s a fairly good desktop
+distribution, and the software is nice and bleeding edge; perfect for developers. But sometimes, it
+breaks.&lt;&#x2F;p&gt;
+&lt;p&gt;I’m still on Fedora 20, but a handful of coworkers have either upgraded to Fedora 21 or installed
+the latest version because they recently got new computers (and crunchbang doesn’t play well with
+newer Haswell setups).  All the new setups had one problem: they couldn’t connect to one of our
+VPNs. We’re in the process of migrating to &lt;a href=&quot;https:&#x2F;&#x2F;www.softether.org&#x2F;&quot;&gt;SoftEther&lt;&#x2F;a&gt;, but this particular VPN still
+uses PPTP while we validate that SoftEther can handle our load.&lt;&#x2F;p&gt;
+&lt;p&gt;So what happened? The short answer is that the VPN wouldn’t connect. It would take ages for the
+connection attempt to fail, and &lt;a href=&quot;https:&#x2F;&#x2F;gist.github.com&#x2F;slauwers&#x2F;ac2cd840aef6f3bbea84&quot;&gt;in the logs&lt;&#x2F;a&gt;, we’d see something along the lines of:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;LCP: timeout sending Config-Requests
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;After &lt;a href=&quot;http:&#x2F;&#x2F;askubuntu.com&#x2F;questions&#x2F;572497&#x2F;cant-connect-to-pptp-vpn-with-ufw-enabled-on-ubuntu-14-04-with-kernel-3-18&quot;&gt;a bit of digging&lt;&#x2F;a&gt;, it turns out that there are a few packets that &lt;a href=&quot;http:&#x2F;&#x2F;marc.info&#x2F;?l=netfilter&amp;amp;m=142195881513706&quot;&gt;are being
+blocked by the firewall since the 3.18 kernel&lt;&#x2F;a&gt;:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As expected, with the 3.2.x kernel :&lt;&#x2F;p&gt;
+&lt;p&gt;if neither nf_conntrack_proto_gre nor nf_conntrack_pptp are loaded, the first GRE packet of a
+plain GRE tunnel (as set by ip tunnel) or a PPTP connection is NEW ;&lt;&#x2F;p&gt;
+&lt;p&gt;[…]&lt;&#x2F;p&gt;
+&lt;p&gt;What has changed with the 3.18.x kernel : if neither nf_conntrack_pptp nor nf_conntrack_proto_gre
+are loaded, any GRE packet is INVALID.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;The solution, thus, both on Ubuntu and Fedora (and I expect others as well) is to always load the
+&lt;code&gt;nf_conntrack_pptp&lt;&#x2F;code&gt; module.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Fedora
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo nf_conntrack_pptp | sudo tee &#x2F;etc&#x2F;modules-load.d&#x2F;pptp-firewall.conf
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;sudo modprobe nf_conntrack_pptp
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;# Ubuntu and friends
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;echo nf_conntrack_pptp | sudo tee &#x2F;etc&#x2F;modules&#x2F;pptp-firewall.conf
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;sudo modprobe nf_conntrack_pptp
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Happy connecting!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">At the office, a few us use Fedora. The main reasons are that it&#x27;s a fairly good
+desktop distribution, and the software is nice and bleeding edge; perfect for developers. But
+sometimes, it breaks.</summary>
+        </entry><entry xml:lang="en">
+        <title>Routing YouTube traffic through a server</title>
+        <published>2013-10-17T00:00:00+00:00</published>
+        <updated>2013-10-17T00:00:00+00:00</updated>
+        <author>
+            <name>Sebastian Lauwers</name>
+        </author>
+        <link rel="alternate" href="https://blog.wedrop.it/blog/routing-youtube-server/" type="text/html"/>
+        <id>https://blog.wedrop.it/blog/routing-youtube-server/</id>
+        
+            <content type="html">&lt;p&gt;My ISP, Free, is in a bit of a conflict with Google, on a number of subjects. Advertising, bandwidth
+prices, the list is fairly long.  If this were a purely commercial war, end-users wouldn’t be hit.
+But, neither Google nor Free wanting to back down, it stopped being a purely commercial war, and for
+the past year or so, the pipe connecting Free users to YouTube’s servers has shrunk to become tiny.&lt;&#x2F;p&gt;
+&lt;p&gt;I don’t mind, I think &lt;a href=&quot;http:&#x2F;&#x2F;www.free.fr&quot;&gt;Free&lt;&#x2F;a&gt; is an excellent ISP, and even though I could switch to another ISP
+and bypass these issues, their stance on protecting my rights and privacy is unequalled. I value my
+privacy and their company more than I value my YouTube bandwidth.&lt;&#x2F;p&gt;
+&lt;p&gt;I own a couple of dedicated servers with unlimited bandwidth (courtesy of &lt;a href=&quot;http:&#x2F;&#x2F;www.ovh.fr&quot;&gt;OVH&lt;&#x2F;a&gt;), so I decided to
+try and use one of those as a proxy to YouTube. Here are the things you’ll need:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;A DNS server on your local network (I’ll be using &lt;code&gt;dnsmasq&lt;&#x2F;code&gt; on my raspberrypi).&lt;&#x2F;li&gt;
+&lt;li&gt;A server with squid3 on it.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;My router is a Freebox Revolution, and by default the DHCP will give the router’s IP as DNS server.
+I changed the primary DNS to point to my raspberrypi, and kept the freebox’s IP as a secondary DNS,
+as backup, in case the raspberry is down.&lt;&#x2F;p&gt;
+&lt;p&gt;On the raspberrypi, install dnsmasq:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get install dnsmasq&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Next, configure dnsmasq to hijack all YouTube related traffic to your server:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-assignment z-shell&quot;&gt;server&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-shell&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-unquoted z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;123.123.123.123&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-support z-function z-echo z-shell&quot;&gt;echo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;address=&#x2F;youtube.com&#x2F;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;server&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-pipe z-shell&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; tee&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;a&lt;&#x2F;span&gt; &#x2F;etc&#x2F;dnsmasq.conf&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;On my server, I already host quite a few websites, so port 80 is already assigned to &lt;code&gt;lighttpd&lt;&#x2F;code&gt;. I
+could use &lt;code&gt;iptables&lt;&#x2F;code&gt; to send the traffic from my home network to &lt;code&gt;squid&lt;&#x2F;code&gt; (on port 3128), but then I
+couldn’t access sites hosted by lighty.&lt;&#x2F;p&gt;
+&lt;p&gt;Instead, I opted to use lighty as a reverse proxy onto squid, and added the following rule to
+&lt;code&gt;&#x2F;etc&#x2F;lighttpd&#x2F;lighttpd.conf&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;else $HTTP[&amp;quot;host&amp;quot;] =~ &amp;quot;youtube.com$&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  $HTTP[&amp;quot;remoteip&amp;quot;] == &amp;quot;88.88.88.88&amp;quot; {
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    proxy.server = (&amp;quot;&amp;quot; =&amp;gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;      (( &amp;quot;host&amp;quot; =&amp;gt; &amp;quot;127.0.0.1&amp;quot;, &amp;quot;port&amp;quot; =&amp;gt; 3128 ))
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;    )
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;  }
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Also, don’t forget to add &lt;code&gt;mod_proxy&lt;&#x2F;code&gt; to the &lt;code&gt;server.modules&lt;&#x2F;code&gt; directive.&lt;&#x2F;p&gt;
+&lt;p&gt;Now, install squid:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt-get install squid3&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Lastly, &lt;code&gt;&#x2F;etc&#x2F;squid3&#x2F;squid.conf&lt;&#x2F;code&gt; needs a couple of lines for everything to work properly:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;http_access allow localhost
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;http_port 127.0.0.1:3128 transparent vhost allow-direct
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And that’s it! Now, obviously, this completely and utterly breaks every SSL aspect on YouTube, but I
+don’t care about those. Another side-effect is that when logging-in to another Google service such
+as GMail, one of the redirects that happens during the login process will fail. I imagine this is
+Google ensuring all the cookies are set properly. The workaround to this is to simply refresh the
+page you were trying to get at initially; the cookies will have been set, and you will be logged in.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">How to MITM YouTube to prevent peering issues.</summary>
+        </entry>
+</feed>
